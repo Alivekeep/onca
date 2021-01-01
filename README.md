@@ -9,8 +9,6 @@
 Onca is a simple and superfast templating engine that optimizes template rendering speed by scope pre-declared technique, hence achieving runtime performance which is close to the limits of JavaScript.
 Supported only NodeJS.
 
-[speed test online](https://alivekeep.github.io/onca/rendering-test/).
-
 ## Feature
 
 1. performance is close to the JavaScript rendering limits
