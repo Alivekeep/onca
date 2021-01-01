@@ -23,11 +23,11 @@ const template = (filename, content) =>
 
 /**
  * Express-like template method
- * @param filename
- * @param options
- * @param callback
+ * @param filename {String}
+ * @param options {Object}
+ * @param callback {Function}
  */
-function express(filename, options, callback) {
+function expressEngine(filename, options, callback) {
   let innerOptions = {};
   const data = options;
 
@@ -48,6 +48,6 @@ function express(filename, options, callback) {
 template.render = render;
 template.compile = compile;
 template.defaults = defaults;
-template.express = express;
+template.expressEngine = expressEngine;
 
 module.exports = template;

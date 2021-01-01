@@ -1,4 +1,4 @@
-declare type artTemplateDefaults = {
+declare type oncaDefaults = {
   /**
    * template name
    */
@@ -41,7 +41,7 @@ declare type artTemplateDefaults = {
   /**
    * sub template compilation adapter
    */
-  include: any,
+  include: any;
 
   /**
    *  HTML minifier. Work only in NodeJS environment
@@ -52,27 +52,27 @@ declare type artTemplateDefaults = {
    * HTML minifier configuration. Refer to: https://github.com/kangax/html-minifier
    */
   htmlMinifierOptions: {
-    collapseWhitespace: boolean,
-    minifyCSS: boolean,
-    minifyJS: boolean,
+    collapseWhitespace: boolean;
+    minifyCSS: boolean;
+    minifyJS: boolean;
     // automatically merged at runtime: rules.map(rule => rule.test)
-    ignoreCustomFragments: any[]
+    ignoreCustomFragments: any[];
   };
 
   /**
    * error events. Work only if bail is false
    */
-  onerror: any,
+  onerror: any;
 
   /**
    * template file loader
    */
-  loader: any,
+  loader: any;
 
   /**
    * cache center adapter (depend on filename field)
    */
-  caches: any,
+  caches: any;
 
   /**
    * root directory of template. If filename field is not a local path, template will be found in root directory
@@ -84,26 +84,27 @@ declare type artTemplateDefaults = {
    * @default '.art'
    * default extension. If no extensions, extname will be automatically added
    */
-  extname: string,
+  extname: string;
 
   /**
    * ignored variables. An array of template variables ignored by template compiler
    */
-  ignore: any[],
+  ignore: any[];
 
   // imported template variables
-  imports: { [key: string]: Function }
-}
+  imports: { [key: string]: Function };
+};
 /**
  *
- * @param filenameOrTemplateId  [ for bowser ] id of template      [ for Node ] fileName of template
- * @param content [ if is Object ] return compile result , [ if is string ] return compile Funtion
+ * @param filenameOrTemplateId fileName of template
+ * @param content [ if is Object ] return compile result , [ if is string ] return compile Function
  */
-declare function artTemplate(filenameOrTemplateId: string, content?: string | Object): any;
-declare namespace artTemplate {
-  export const defaults: artTemplateDefaults;
+declare function onca(filenameOrTemplateId: string, content?: string | Object): any;
+declare namespace onca {
+  export const defaults: oncaDefaults;
   export const extension: { [key: string]: Function };
   function render(source: string, data: any, options?: any): string;
   function compile(source: string, options?: any): (data: any) => string;
+  function expressEngine(filename: string, options: {}, callback: Function): void;
 }
-export = artTemplate;
+export = onca;
