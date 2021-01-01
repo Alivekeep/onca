@@ -1,61 +1,58 @@
 {
-    "name": "onca",
-    "typings": "index.d.ts",
-    "description": "Onca - Rapid JavaScript Template Engine (only NodeJS)",
-    "homepage": "http://alivekeep.github.com/onca/",
-    "version": "1.0.1",
-    "keywords": [
-        "template",
-        "renderer",
-        "html",
-        "engine"
-    ],
-    "author": "tangbin <sugarpie.tang@gmail.com>, Alivekeep <2fed.tcp@gmail.com>",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:Alivekeep/onca.git"
-    },
-    "scripts": {
-        "build": "npm run build-lib && npm run build-web",
-        "build-lib": "rm -rf lib && babel src --out-dir lib",
-        "build-web": "export NODE_ENV=production && webpack",
-        "dev": "babel src --watch --out-dir lib",
-        "test": "export NODE_ENV=production && istanbul cover node_modules/mocha/bin/_mocha -- --ui exports --colors 'test/**/*.js'",
-        "coverage": "cat ./coverage/lcov.info | coveralls"
-    },
-    "main": "index.js",
-    "files": [
-        "lib/",
-        "index.d.ts"
-    ],
-    "engines": {
-        "node": ">= 10.0.0"
-    },
-    "dependencies": {
-        "acorn": "^8.0.4",
-        "escodegen": "^2.0.0",
-        "estraverse": "^5.2.0",
-        "html-minifier": "^4.0.0",
-        "is-keyword-js": "^1.0.3",
-        "js-tokens": "^6.0.0",
-        "merge-source-map": "^1.1.0",
-        "source-map": "^0.7.3"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.7.0",
-        "coveralls": "^3.1.0",
-        "eslint": "^7.16.0",
-        "eslint-loader": "^1.7.1",
-        "eslint-plugin-prettier": "^3.3.0",
-        "eslint-webpack-plugin": "^2.4.1",
-        "istanbul": "^0.4.5",
-        "mocha": "^8.2.1",
-        "node-loader": "^1.0.2",
-        "node-noop": "^1.0.0",
-        "prettier": "^2.2.1",
-        "webpack": "^5.11.1",
-        "webpack-cli": "^4.3.1"
-    },
-    "license": "MIT"
+  "name": "onca",
+  "typings": "index.d.ts",
+  "description": "Onca - Rapid JavaScript Template Engine (only NodeJS)",
+  "homepage": "http://alivekeep.github.com/onca/",
+  "version": "1.1.0",
+  "keywords": [
+    "template",
+    "renderer",
+    "html",
+    "engine"
+  ],
+  "author": "tangbin <sugarpie.tang@gmail.com>, Alivekeep <2fed.tcp@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Alivekeep/onca.git"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src/",
+    "index.d.ts"
+  ],
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "dependencies": {
+    "acorn": "^8.0.4",
+    "escodegen": "^2.0.0",
+    "estraverse": "^5.2.0",
+    "html-minifier": "^4.0.0",
+    "is-keyword-js": "^1.0.3",
+    "js-tokens": "^6.0.0",
+    "merge-source-map": "^1.1.0",
+    "source-map": "^0.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "license": "MIT"
 }
