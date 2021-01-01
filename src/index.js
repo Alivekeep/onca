@@ -21,8 +21,33 @@ const template = (filename, content) =>
         source: content
       });
 
+/**
+ * Express-like template method
+ * @param filename
+ * @param options
+ * @param callback
+ */
+function express(filename, options, callback) {
+  let innerOptions = {};
+  const data = options;
+
+  if (options.settings && options.settings['view options']) {
+    innerOptions = options.settings['view options'];
+  }
+
+  innerOptions.filename = filename;
+
+  try {
+    const renderer = template.compile(innerOptions);
+    callback(null, renderer(data));
+  } catch (e) {
+    callback(e);
+  }
+}
+
 template.render = render;
 template.compile = compile;
 template.defaults = defaults;
+template.express = express;
 
 module.exports = template;
