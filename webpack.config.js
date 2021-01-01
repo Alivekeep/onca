@@ -1,60 +1,26 @@
 const path = require('path');
 const webpack = require('webpack');
-const packageInfo = require('./package.json');
-const version = packageInfo.version;
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    target: 'web',
-    entry: {
-        'template-web': path.resolve(__dirname, 'lib', 'index')
-    },
+    target: 'node',
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    entry: path.resolve(__dirname, 'lib', 'index'),
     output: {
         path: path.resolve(__dirname, 'lib'),
         filename: '[name].js',
         library: 'template',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
     },
-    node: {
-        fs: 'empty',
-        path: 'empty',
-        process: false
-    },
+    module: {},
     resolve: {
         alias: {
-            'html-minifier': 'node-noop'
-        }
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: [
-                    {
-                        loader: 'eslint-loader'
-                    }
-                ]
-            }
-        ]
+            'html-minifier': 'node-noop',
+        },
     },
     devtool: 'source-map',
-    plugins: [
-        new webpack.BannerPlugin(
-            `art-template@${version} for browser | https://github.com/aui/art-template`
-        ),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        process.env.NODE_ENV === 'production'
-            ? new webpack.optimize.UglifyJsPlugin({
-                  compress: {
-                      warnings: false,
-                      screw_ie8: false
-                  },
-                  mangle: {
-                      screw_ie8: false
-                  },
-                  output: {
-                      screw_ie8: false
-                  }
-              })
-            : () => {}
-    ]
+    plugins: [new ESLintPlugin(), new webpack.optimize.ModuleConcatenationPlugin()],
+    node: {
+        global: true,
+    },
 };

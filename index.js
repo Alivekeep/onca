@@ -1,4 +1,4 @@
-const template = require('./lib/index');
+const template = require('./lib');
 const extension = require('./lib/extension');
 
 template.extension = extension;
