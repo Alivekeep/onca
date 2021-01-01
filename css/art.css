@@ -35,19 +35,19 @@ body {
 body {
   background: #fff;
   font-size: 16px;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   color: #444;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 .wrapper::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 .inner::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -66,8 +66,8 @@ a:hover {
 #header {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  background-color: rgba(255,255,255,0.8);
-  box-shadow: 0 0 1px rgba(0,0,0,0.25);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
   transition: background-color 0.3s ease-in-out;
   padding: 15px 60px;
   position: sticky;
@@ -77,7 +77,7 @@ a:hover {
   z-index: 2;
 }
 #header::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -169,7 +169,7 @@ a:hover {
   margin-bottom: -3px;
   margin-right: 20px;
   font-size: inherit;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   outline: none;
   -webkit-appearance: none;
 }
@@ -190,7 +190,7 @@ a:hover {
 }
 #lang-select-label {
   opacity: 0.7;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 #lang-select-label span {
   padding-left: 8px;
@@ -293,7 +293,7 @@ a:hover {
 }
 #about::after {
   color: #fff;
-  content: '›';
+  content: "›";
   font-size: 3em;
   width: 3em;
   text-align: center;
@@ -368,7 +368,7 @@ a:hover {
 .sidebar-title {
   margin-top: 40px;
   padding: 10px 0;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
   color: #003cb1;
   display: inline-block;
@@ -386,12 +386,12 @@ a:hover {
   position: relative;
 }
 #content::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 #content-inner::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -407,7 +407,7 @@ a:hover {
   }
 }
 .article-inner::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -422,14 +422,14 @@ a:hover {
   }
 }
 .article-header::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 .article-title {
   float: left;
   margin-top: 0;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 2em;
   font-weight: 600;
   text-decoration: none;
@@ -630,10 +630,10 @@ a.article-title:hover {
   box-sizing: content-box;
   background-color: #fff;
 }
-.article-content img[align=right] {
+.article-content img[align="right"] {
   padding-left: 20px;
 }
-.article-content img[align=left] {
+.article-content img[align="left"] {
   padding-right: 20px;
 }
 .article-content .emoji {
@@ -717,7 +717,7 @@ a.article-title:hover {
   padding-bottom: 0.2em;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(27,31,35,0.05);
+  background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
 }
 .article-content code::before,
@@ -767,7 +767,7 @@ a.article-title:hover {
   position: relative;
 }
 .article-footer::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -781,7 +781,7 @@ a.article-title:hover {
   color: #003cb1;
   text-decoration: none;
   font-weight: bold;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   text-transform: uppercase;
   position: absolute;
 }
@@ -830,12 +830,12 @@ a.article-title:hover {
   margin: 40px 0;
 }
 #plugin-list-header::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 #plugin-list-title {
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 36px;
   font-weight: 300;
   line-height: 1;
@@ -898,7 +898,7 @@ a.article-title:hover {
   display: block;
 }
 .plugin-name {
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
   color: #003cb1;
   font-size: 20px;
@@ -916,7 +916,7 @@ a.article-title:hover {
   line-height: 1.3;
 }
 .plugin-tag-list::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -953,7 +953,7 @@ a.article-title:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
   text-align: center;
   opacity: 0;
@@ -995,7 +995,7 @@ a.article-title:hover {
   line-height: line-height;
 }
 .archive-post-link::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -1003,7 +1003,7 @@ a.article-title:hover {
   color: #0047d2;
 }
 .archive-post-title {
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   float: left;
   font-weight: bold;
 }
@@ -1020,7 +1020,7 @@ a.article-title:hover {
   height: 100%;
   background: #003cb1;
   transition: 0.4s;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 #mobile-nav ul {
   padding-left: 0;
@@ -1122,7 +1122,7 @@ a.article-title:hover {
   left: 0;
   width: 100%;
   background: #003cb1;
-  border-top: 1px solid rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 #mobile-lang-select-label {
   line-height: 40px;
@@ -1171,13 +1171,13 @@ a.article-title:hover {
   text-align: center;
   font-size: 0.9em;
   color: #ccc;
-  font-family: Lato, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Lato, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   position: relative;
   line-height: 1.5em;
   padding-bottom: 1em;
 }
 #footer::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -1240,7 +1240,7 @@ pre code {
   color: #999;
 }
 .highlight figcaption::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -1271,16 +1271,16 @@ pre code {
   font-weight: 600;
 }
 .highlight.html .code:after {
-  content: 'HTML';
+  content: "HTML";
 }
 .highlight.js .code:after {
-  content: 'JS';
+  content: "JS";
 }
 .highlight.bash .code:after {
-  content: 'Shell';
+  content: "Shell";
 }
 .highlight.css .code:after {
-  content: 'CSS';
+  content: "CSS";
 }
 pre .comment,
 pre .title {
