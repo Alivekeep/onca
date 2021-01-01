@@ -61,15 +61,15 @@ function koaEngine(app, settings = {}) {
 
   function renderer(filename, data) {
     innerSettings.filename = filename;
-    const renderMethod = template.compile(settings);
+    const renderMethod = template.compile(innerSettings);
     return renderMethod(data);
   }
 
   // eslint-disable-next-line no-param-reassign,consistent-return
-  app.context.render = (view, _context) => {
+  app.context.render = function rendererMethod(view, _context) {
     const context = { ...this.state, ..._context };
     const html = renderer(view, context);
-    const writeResp = context.writeResp === false ? false : context.writeResp || settings.writeResp;
+    const writeResp = context.writeResp === false ? false : context.writeResp || innerSettings.writeResp;
 
     if (writeResp) {
       this.type = 'html';
