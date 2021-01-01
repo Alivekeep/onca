@@ -45,9 +45,45 @@ function expressEngine(filename, options, callback) {
   }
 }
 
+/**
+ * Koa-like template method
+ * @param app {Object}
+ * @param settings {Object}
+ */
+function koaEngine(app, settings = {}) {
+  if (app.context.render) {
+    return;
+  }
+
+  let innerSettings = {};
+
+  innerSettings = { debug: process.env.NODE_ENV !== 'production', writeResp: true, ...settings };
+
+  function renderer(filename, data) {
+    innerSettings.filename = filename;
+    const renderMethod = template.compile(settings);
+    return renderMethod(data);
+  }
+
+  // eslint-disable-next-line no-param-reassign,consistent-return
+  app.context.render = (view, _context) => {
+    const context = { ...this.state, ..._context };
+    const html = renderer(view, context);
+    const writeResp = context.writeResp === false ? false : context.writeResp || settings.writeResp;
+
+    if (writeResp) {
+      this.type = 'html';
+      this.body = html;
+    } else {
+      return html;
+    }
+  };
+}
+
 template.render = render;
 template.compile = compile;
 template.defaults = defaults;
 template.expressEngine = expressEngine;
+template.koaEngine = koaEngine;
 
 module.exports = template;

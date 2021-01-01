@@ -106,5 +106,6 @@ declare namespace onca {
   function render(source: string, data: any, options?: any): string;
   function compile(source: string, options?: any): (data: any) => string;
   function expressEngine(filename: string, options: {}, callback: Function): void;
+  function koaEngine(app: Object, settings: Object): void;
 }
 export = onca;
