@@ -34,8 +34,8 @@ Worked only in NodeJS.
   - [Configuration](https://github.com/Alivekeep/onca#configuration)
 - [Options](https://github.com/Alivekeep/onca#options)
 - [Examples](https://github.com/Alivekeep/onca#examples)
-  - [Express.js](https://github.com/Alivekeep/onca#express.js)
-  - [Koa.js](https://github.com/Alivekeep/onca#koa.js)
+  - [Express.js](https://github.com/Alivekeep/onca#express-js)
+  - [Koa.js](https://github.com/Alivekeep/onca#koa-js)
   - [NestJS](https://github.com/Alivekeep/onca#nestjs)
 - [License](https://github.com/Alivekeep/onca#license)
 
