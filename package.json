@@ -3,7 +3,7 @@
   "typings": "index.d.ts",
   "description": "Onca - Rapid JavaScript Template Engine (only NodeJS)",
   "homepage": "http://alivekeep.github.com/onca/",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "keywords": [
     "template",
     "renderer",
@@ -24,17 +24,17 @@
     "node": ">= 10.0.0"
   },
   "dependencies": {
-    "acorn": "^5.0.3",
-    "escodegen": "^1.8.1",
-    "estraverse": "^4.2.0",
-    "html-minifier": "^3.4.3",
+    "acorn": "^8.0.4",
+    "escodegen": "^2.0.0",
+    "estraverse": "^5.2.0",
+    "html-minifier": "^4.0.0",
     "is-keyword-js": "^1.0.3",
     "js-tokens": "^3.0.1",
-    "merge-source-map": "^1.0.3",
-    "source-map": "^0.5.6"
+    "merge-source-map": "^1.1.0",
+    "source-map": "^0.7.3"
   },
   "devDependencies": {
-    "eslint": "^7.16.0",
+    "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
