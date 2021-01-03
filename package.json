@@ -3,7 +3,7 @@
   "typings": "index.d.ts",
   "description": "Onca - Rapid JavaScript Template Engine (only NodeJS)",
   "homepage": "http://alivekeep.github.com/onca/",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "keywords": [
     "template",
     "renderer",
