@@ -64,9 +64,7 @@ a:hover {
   text-decoration: underline;
 }
 #header {
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  background-color: rgba(255, 255, 255, 0.8);
+
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
   transition: background-color 0.3s ease-in-out;
   padding: 15px 60px;
@@ -97,7 +95,6 @@ a:hover {
 #page-home #header {
   position: relative;
   box-shadow: none;
-  background-color: #003cb1;
 }
 #page-home #header #lang-select-label * {
   color: #fff;
@@ -137,7 +134,7 @@ a:hover {
 }
 .main-nav-link:hover,
 .main-nav-link.current {
-  border-bottom: 3px solid #003cb1;
+  border-bottom: 1px solid #fff;
 }
 #search-input-wrap {
   display: none;
@@ -217,7 +214,6 @@ a:hover {
   background: #fff;
 }
 #about {
-  background-color: #003cb1;
   text-align: center;
   min-height: 350px;
   height: calc(100vh - 59px);
@@ -286,7 +282,7 @@ a:hover {
 }
 #about .button.start {
   background: #fff;
-  color: #003cb1;
+  color: #000;
 }
 #about .button.github {
   background: transparent;
@@ -1147,6 +1143,8 @@ a.article-title:hover {
 #container {
   transition: 0.4s;
   -webkit-overflow-scrolling: touch;
+  background: rgb(63,94,251);
+  background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 .mobile-nav-on #container {
   transform: translateX(260px);
