@@ -7,14 +7,14 @@ const matchToToken = require('js-tokens').matchToToken;
  * @param {string} code
  * @return {Object[]}
  */
-const esTokenizer = (code) => {
+const esTokenizer = code => {
   const tokens = code
     .match(jsTokens)
-    .map((value) => {
+    .map(value => {
       jsTokens.lastIndex = 0;
       return matchToToken(jsTokens.exec(value));
     })
-    .map((token) => {
+    .map(token => {
       if (token.type === 'name' && isKeyword(token.value)) {
         token.type = 'keyword';
       }

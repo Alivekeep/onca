@@ -43,13 +43,13 @@ const settings = {
   compileDebug: false,
 
   // 模板路径转换器
-  resolveFilename,
+  resolveFilename: resolveFilename,
 
   // 子模板编译适配器
-  include,
+  include: include,
 
   // HTML 压缩器。仅在 NodeJS 环境下有效
-  htmlMinifier,
+  htmlMinifier: htmlMinifier,
 
   // HTML 压缩器配置。参见 https://github.com/kangax/html-minifier
   htmlMinifierOptions: {
@@ -61,13 +61,13 @@ const settings = {
   },
 
   // 错误事件。仅在 bail 为 false 时生效
-  onerror,
+  onerror: onerror,
 
   // 模板文件加载器
-  loader,
+  loader: loader,
 
   // 缓存中心适配器（依赖 filename 字段）
-  caches,
+  caches: caches,
 
   // 模板根目录。如果 filename 字段不是本地路径，则在 root 查找模板
   root: '/',
@@ -83,8 +83,7 @@ const settings = {
 };
 
 function Defaults() {
-  this.$extend = function (options) {
-    // eslint-disable-next-line no-param-reassign
+  this.$extend = function(options) {
     options = options || {};
     return extend(options, options instanceof Defaults ? options : this);
   };

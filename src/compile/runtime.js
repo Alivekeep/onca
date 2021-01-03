@@ -6,8 +6,8 @@ const globalThis =
     : typeof window !== 'undefined'
     ? window
     : typeof global !== 'undefined'
-    ? global
-    : {};
+      ? global
+      : {};
 
 const runtime = Object.create(globalThis);
 const ESCAPE_REG = /["&'<>]/;

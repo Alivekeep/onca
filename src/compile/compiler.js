@@ -108,7 +108,7 @@ class Compiler {
     }
 
     this.source = source;
-    this.getTplTokens(source, options.rules, this).forEach((tokens) => {
+    this.getTplTokens(source, options.rules, this).forEach(tokens => {
       if (tokens.type === tplTokenizer.TYPE_STRING) {
         this.parseString(tokens);
       } else {
@@ -143,10 +143,10 @@ class Compiler {
   getVariables(esTokens) {
     let ignore = false;
     return esTokens
-      .filter((esToken) => {
+      .filter(esToken => {
         return esToken.type !== `whitespace` && esToken.type !== `comment`;
       })
-      .filter((esToken) => {
+      .filter(esToken => {
         if (esToken.type === `name` && !ignore) {
           return true;
         }
@@ -155,7 +155,7 @@ class Compiler {
 
         return false;
       })
-      .map((tooken) => tooken.value);
+      .map(tooken => tooken.value);
   }
 
   /**
@@ -177,7 +177,7 @@ class Compiler {
         value = internal[name];
 
         if (has(dependencies, name)) {
-          dependencies[name].forEach((name) => this.importContext(name));
+          dependencies[name].forEach(name => this.importContext(name));
         }
 
         // imports 继承了 Global，但是继承的属性不分配到顶级变量中，避免占用了模板内部的变量名称
@@ -234,7 +234,7 @@ class Compiler {
     }
 
     const esToken = this.getEsTokens(code);
-    this.getVariables(esToken).forEach((name) => this.importContext(name));
+    this.getVariables(esToken).forEach(name => this.importContext(name));
 
     this.scripts.push({
       source,
@@ -320,7 +320,7 @@ class Compiler {
     };
 
     // Trim code
-    const trim = (code) => {
+    const trim = code => {
       return code.replace(/^[\t ]+|[\t ]$/g, '');
     };
 
@@ -332,9 +332,11 @@ class Compiler {
     if (options.compileDebug) {
       stacks.push(`try{`);
 
-      scripts.forEach((script) => {
+      scripts.forEach(script => {
         if (script.tplToken.type === tplTokenizer.TYPE_EXPRESSION) {
-          stacks.push(`${LINE}=[${[script.tplToken.line, script.tplToken.start].join(',')}]`);
+          stacks.push(
+            `${LINE}=[${[script.tplToken.line, script.tplToken.start].join(',')}]`
+          );
         }
 
         mappings.push(mapping(script.code, script.tplToken));
@@ -345,21 +347,21 @@ class Compiler {
 
       stacks.push(
         'throw {' +
-          [
-            `name:'RuntimeError'`,
-            `path:${stringify(filename)}`,
-            `message:error.message`,
-            `line:${LINE}[0]+1`,
-            `column:${LINE}[1]+1`,
-            `source:${stringify(source)}`,
-            `stack:error.stack`
-          ].join(`,`) +
-          '}'
+        [
+          `name:'RuntimeError'`,
+          `path:${stringify(filename)}`,
+          `message:error.message`,
+          `line:${LINE}[0]+1`,
+          `column:${LINE}[1]+1`,
+          `source:${stringify(source)}`,
+          `stack:error.stack`
+        ].join(`,`) +
+        '}'
       );
 
       stacks.push(`}`);
     } else {
-      scripts.forEach((script) => {
+      scripts.forEach(script => {
         mappings.push(mapping(script.code, script.tplToken));
         stacks.push(trim(script.code));
       });

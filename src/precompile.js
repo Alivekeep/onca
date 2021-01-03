@@ -6,14 +6,13 @@ const sourceMap = require('source-map');
 const mergeSourceMap = require('merge-source-map');
 const compile = require('./compile');
 const defaults = require('./defaults');
-
 const runtimePath = require.resolve('./runtime');
 
-const { CONSTS } = compile.Compiler;
+const CONSTS = compile.Compiler.CONSTS;
 const LOCAL_MODULE = /^\.+\//;
 
 // 获取默认设置
-const getDefaults = (options) => {
+const getDefaults = options => {
   // new defaults
   const setting = {
     imports: runtimePath,
@@ -25,8 +24,7 @@ const getDefaults = (options) => {
     sourceRoot: options.sourceRoot
   };
 
-  // eslint-disable-next-line guard-for-in
-  for (const name in options) {
+  for (let name in options) {
     setting[name] = options[name];
   }
 
@@ -44,7 +42,7 @@ const convertFilenameNode = (node, options) => {
     if (LOCAL_MODULE.test(relativePath)) {
       node.value = relativePath;
     } else {
-      node.value = `./${relativePath}`;
+      node.value = './' + relativePath;
     }
 
     delete node.raw;
@@ -60,7 +58,7 @@ const getOldSourceMap = (mappings, { sourceRoot, source, file }) => {
     sourceRoot
   });
 
-  mappings.forEach((mapping) => {
+  mappings.forEach(mapping => {
     mapping.source = source;
     oldSourceMap.addMapping(mapping);
   });
@@ -90,14 +88,16 @@ const precompile = (options = {}) => {
   if (typeof imports !== 'string') {
     throw Error(
       'template.precompile(): "options.imports" is a file. Example:\n' +
-        'options: { imports: require.resolve("art-template/lib/runtime") }\n'
+      'options: { imports: require.resolve("art-template/lib/runtime") }\n'
     );
   } else {
     options.imports = require(imports);
   }
 
   const isLocalModule = LOCAL_MODULE.test(imports);
-  const tplImportsPath = isLocalModule ? imports : path.relative(path.dirname(options.filename), imports);
+  const tplImportsPath = isLocalModule
+    ? imports
+    : path.relative(path.dirname(options.filename), imports);
   const fn = compile(options);
 
   code = '(' + fn.toString() + ')';
@@ -106,7 +106,7 @@ const precompile = (options = {}) => {
   });
 
   let extendNode = null;
-  const enter = function (node) {
+  const enter = function(node) {
     if (node.type === 'VariableDeclarator' && functions.indexOf(node.id.name) !== -1) {
       // TODO 对变量覆盖进行抛错
       if (node.id.name === CONSTS.INCLUDE) {
@@ -176,15 +176,18 @@ const precompile = (options = {}) => {
 
         case CONSTS.INCLUDE:
           const filename = node.arguments.shift();
-          const filenameNode = filename.name === CONSTS.FROM ? extendNode : convertFilenameNode(filename, options);
+          const filenameNode =
+            filename.name === CONSTS.FROM
+              ? extendNode
+              : convertFilenameNode(filename, options);
           const paramNodes = node.arguments.length
             ? node.arguments
             : [
-                {
-                  type: 'Identifier',
-                  name: CONSTS.DATA
-                }
-              ];
+              {
+                type: 'Identifier',
+                name: CONSTS.DATA
+              }
+            ];
 
           replaceNode = node;
           replaceNode['arguments'] = [
