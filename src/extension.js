@@ -6,17 +6,15 @@ const templatePath = require.resolve('./index.js');
  * @param {Object} module
  * @param {string} flnm
  */
-const extension = function(module, flnm) {
-    const filename = flnm || module.filename;
-    const imports = 'var template=require(' + JSON.stringify(templatePath) + ')';
-    const options = JSON.stringify({
-        filename: filename
-    });
+const extension = function (module, flnm) {
+  const filename = flnm || module.filename;
+  const imports = `const template=require(${JSON.stringify(templatePath)})`;
+  const options = JSON.stringify({
+    filename
+  });
 
-    module._compile(
-        imports + '\n' + 'module.exports = template.compile(' + options + ');',
-        filename
-    );
+  // eslint-disable-next-line no-underscore-dangle
+  module._compile(`${imports}\nmodule.exports = template.compile(' + ${options} + ');`, filename);
 };
 
 module.exports = extension;
