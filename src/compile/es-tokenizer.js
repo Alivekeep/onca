@@ -8,20 +8,20 @@ const matchToToken = require('js-tokens').matchToToken;
  * @return {Object[]}
  */
 const esTokenizer = code => {
-  const tokens = code
-    .match(jsTokens)
-    .map(value => {
-      jsTokens.lastIndex = 0;
-      return matchToToken(jsTokens.exec(value));
-    })
-    .map(token => {
-      if (token.type === 'name' && isKeyword(token.value)) {
-        token.type = 'keyword';
-      }
-      return token;
-    });
+    const tokens = code
+        .match(jsTokens)
+        .map(value => {
+            jsTokens.lastIndex = 0;
+            return matchToToken(jsTokens.exec(value));
+        })
+        .map(token => {
+            if (token.type === 'name' && isKeyword(token.value)) {
+                token.type = 'keyword';
+            }
+            return token;
+        });
 
-  return tokens;
+    return tokens;
 };
 
 module.exports = esTokenizer;
